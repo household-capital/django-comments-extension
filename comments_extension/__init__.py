@@ -11,13 +11,12 @@ except ImportError:
         raise ImportError('django-comments-extension requires django-contrib-comments to be installed or the deprecated'
                           ' (as of django 1.6) django.contrib.comments.')
 
-from comments_extension.forms import CommentEditForm
-
 
 def get_edit_form():
     """
     Returns a (new) comment edit form object
     """
+    from comments_extension.forms import CommentEditForm
     if django_comments.get_comment_app_name() != django_comments.DEFAULT_COMMENTS_APP and \
             hasattr(django_comments.get_comment_app(), "get_edit_form"):
         return django_comments.get_comment_app().get_edit_form()
@@ -29,6 +28,7 @@ def get_edit_modelform(comment):
     """
     Returns the comment ModelForm instance
     """
+    from comments_extension.forms import CommentEditForm
     if django_comments.get_comment_app_name() != django_comments.DEFAULT_COMMENTS_APP and \
             hasattr(django_comments.get_comment_app(), "get_edit_modelform"):
         return django_comments.get_comment_app().get_edit_modelform()
@@ -40,6 +40,7 @@ def get_edit_form_target(comment):
     """
     Returns the target URL for the comment edit form submission view.
     """
+    from comments_extension.forms import CommentEditForm
     if django_comments.get_comment_app_name() != django_comments.DEFAULT_COMMENTS_APP and \
             hasattr(django_comments.get_comment_app(), "get_edit_form_target"):
         return django_comments.get_comment_app().get_edit_form_target()
