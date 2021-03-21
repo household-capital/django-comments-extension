@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from django.core import urlresolvers
+from django.urls import reverse
 
 # Try to import django_comments otherwise fallback to the django contrib comments
 try:
@@ -44,4 +44,4 @@ def get_edit_form_target(comment):
             hasattr(django_comments.get_comment_app(), "get_edit_form_target"):
         return django_comments.get_comment_app().get_edit_form_target()
     else:
-        return urlresolvers.reverse("comments_extension.views.moderation.edit", args=(comment.id,))
+        return reverse("comments_extension.views.moderation.edit", args=(comment.id,))
