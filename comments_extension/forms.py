@@ -3,7 +3,7 @@ from django import forms
 from django.conf import settings
 from django.utils.text import get_text_list
 from django.utils.translation import ungettext, ugettext, ugettext_lazy as _
-from django.forms.util import ErrorDict
+from django.forms.utils import ErrorDict
 from django.utils.crypto import salted_hmac, constant_time_compare
 
 # Try to import django_comments otherwise fallback to the django contrib comments
