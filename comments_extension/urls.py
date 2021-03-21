@@ -1,6 +1,8 @@
-from django.conf.urls import patterns, url
+from django.urls import path
 
-urlpatterns = patterns("comments_extension.views",
-    url(r"^edit/<int:comment_id>/$", view="moderation.edit", name="comments-edit"),
-    url(r"^edited/$", view="moderation.edit_done", name="comments-edit-done"),
-)
+from .views.moderation import edit, edit_done
+
+urlpatterns = [
+    path("edit/<int:comment_id>/", edit, name="comments-edit"),
+    path("edited/", edit_done, name="comments-edit-done"),
+]
