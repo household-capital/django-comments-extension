@@ -45,4 +45,4 @@ def get_edit_form_target(comment):
             hasattr(django_comments.get_comment_app(), "get_edit_form_target"):
         return django_comments.get_comment_app().get_edit_form_target()
     else:
-        return reverse("comments_extension.views.moderation.edit", args=(comment.id,))
+        return reverse("comments_extension:comments-edit", args=(comment.id,))
