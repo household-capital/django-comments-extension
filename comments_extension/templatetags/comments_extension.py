@@ -69,10 +69,9 @@ class RenderCommentEditFormNode(CommentFormNode):
                 "comments/%s/edit.html" % ctype.model,
                 "comments/edit.html"
             ]
-            context.push()
-            form = comments_extension.get_edit_modelform(self.get_object(context))
-            formstr = render_to_string(template_search_list, {"form": form}, context)
-            context.pop()
+            context_dict = context.flatten()
+            context_dict['form'] = comments_extension.get_edit_modelform(self.get_object(context))
+            formstr = render_to_string(template_search_list, context_dict)
             return formstr
         else:
             return ""
